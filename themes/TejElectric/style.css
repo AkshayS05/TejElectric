@@ -1,0 +1,1030 @@
+.services-section {
+  padding: 60px 20px; /* top/bottom, left/right */
+  background-color: #f9f9f9; /* Light background contrast vs. hero */
+}
+
+.services-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Main Heading & Intro Text */
+.services-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.services-section .intro-text {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 2rem; /* center + bottom spacing */
+  line-height: 1.6;
+  color: #333;
+  text-align: center;
+}
+
+/* Services Grid */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Each Card */
+.service-card {
+  background-color: #fff;
+  border: 1px solid #eee;
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* Makes the card show a pointer cursor on hover */
+}
+
+/* 3D-like effect on hover */
+.service-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon inside the .icon div */
+.service-card .icon {
+  font-size: 2.5rem; /* Larger icon size */
+  color: #02687b; /* main brand color */
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.service-card .icon i {
+  display: inline-block;
+  /* 
+  If you want a circle behind the icon, uncomment these lines:
+  background-color: #eef;
+  padding: 0.5em;
+  border-radius: 50%;
+  */
+}
+
+.service-card h3 {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+  color: #02687b; /* heading color for each card */
+  text-align: center;
+}
+
+/* Lists inside the card */
+.service-card ul {
+  padding-left: 1.2em;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.service-card li {
+  margin-bottom: 0.5em;
+}
+
+/* Responsive tweaks if needed */
+@media (max-width: 768px) {
+  .services-section {
+    padding: 40px 15px;
+  }
+
+  .services-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .service-grid {
+    gap: 1.5rem;
+  }
+}
+
+/* Contact Form Container */
+.tej-contact-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #f8f8f8;
+  padding: 1.5rem 2rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Headline */
+.tej-contact-form h2 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #02687b; /* your brand color */
+}
+
+/* Form Rows */
+.tej-contact-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+.tej-contact-row label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.tej-contact-row input[type="text"],
+.tej-contact-row select,
+.tej-contact-row textarea {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+/* Button */
+.tej-contact-form button[type="submit"] {
+  background-color: #02687b;
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tej-contact-form button[type="submit"]:hover {
+  background-color: #ffb400;
+}
+
+/* Success Message */
+.tej-contact-success {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #c3e6cb;
+}
+
+.site-footer {
+  background-color: #024b58; /* A darker variant of your primary color (#02687b) */
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Footer Menu */
+.footer-nav .footer-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-nav .footer-menu li {
+  display: inline-block;
+}
+
+.footer-nav .footer-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.footer-nav .footer-menu li a:hover {
+  color: #ffb400;
+}
+
+/* Social Icons */
+.footer-social {
+  margin-top: 10px;
+}
+
+.footer-social a {
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+}
+
+.footer-social a:hover {
+  color: #ffb400; /* Accent color for hover */
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 15px;
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+  .footer-nav .footer-menu {
+    flex-direction: column;
+  }
+}
+
+/* About Us Section */
+/* -------------------------------------
+   About Us Section
+-------------------------------------- */
+.about-us-section {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+}
+
+.about-us-hero-image {
+  width: 100%;
+  margin: 0 auto 2rem;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-us-hero-image img {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+}
+
+.about-us-hero-image:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Main Heading */
+.about-us-section h1 {
+  font-size: 2.4rem;
+  color: #02687b;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  text-align: center;
+}
+.electric-hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* center horizontally & vertically */
+  text-align: center;
+}
+.electric-hero-text h2 {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 700;
+  margin: 0;
+  /* Electric/Neon effect using text-shadow */
+  text-shadow: 0 0 5px #ffb400, 0 0 10px #ffb400, 0 0 20px #ffb400,
+    0 0 40px #ffb400;
+}
+/* Main H1 below the hero image */
+.about-us-section h1 {
+  font-size: 2.4rem;
+  color: #02687b;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Intro Text */
+.intro-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+}
+/* Intro Paragraphs */
+.about-us-section .intro-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+}
+
+/* Services Boxes */
+.about-services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.about-service-box {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.about-service-box:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.about-service-box h2 {
+  font-size: 1.3rem;
+  margin: 0 0 1rem;
+  color: #02687b;
+}
+
+.about-service-box ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+  line-height: 1.6;
+}
+/* DARK MODE OVERRIDES FOR ABOUT US PAGE */
+
+/* Make the entire about-us-section dark */
+.dark-mode .about-us-section {
+  background-color: #333; /* a darker background */
+  color: #ddd; /* lighter text color */
+}
+
+/* Override text color for headings/paragraphs in that section */
+.dark-mode .about-us-section h1,
+.dark-mode .about-us-section h2,
+.dark-mode .about-us-section p,
+.dark-mode .about-us-section ul li {
+  color: #ddd;
+}
+
+/* If you want the hero image container also to have a darker background 
+   behind the image, override it too (though the image itself stays the same). */
+.dark-mode .about-us-hero-image {
+  background-color: #444;
+}
+
+/* About-service-box in dark mode */
+.dark-mode .about-service-box {
+  background-color: #444;
+  color: #ddd;
+  border: 1px solid #666;
+}
+
+/* Headings inside those boxes */
+.dark-mode .about-service-box h2 {
+  color: #ffb400; /* or another accent color you like */
+}
+
+/* The CTA section might already be dark, but if you want to modify it further: */
+.dark-mode .cta-section {
+  background: #222; /* or something else */
+  color: #ddd;
+}
+
+/* The CTA button in dark mode (optional) */
+.dark-mode .cta-button {
+  background-color: #444;
+  color: #ffb400;
+}
+.dark-mode .cta-button:hover {
+  background-color: #ffb400;
+  color: #444;
+}
+
+/* -------------------------------------
+   CTA Section (Flickering Bulb)
+-------------------------------------- */
+.cta-section {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #024b58; /* darker brand color */
+  color: #fff;
+  border-radius: 8px;
+  margin: 2rem auto;
+}
+
+.electric-bulb-container {
+  margin-bottom: 1rem;
+}
+
+.electric-bulb-container i {
+  font-size: 3rem;
+  color: #ffb400; /* bright accent color for the bulb */
+  animation: bulbFlicker 2s infinite;
+  cursor: pointer;
+}
+
+@keyframes bulbFlicker {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  25% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  35% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.cta-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.cta-section p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* CTA Button */
+.cta-button {
+  background-color: #02687b;
+  color: #fff;
+  padding: 0.75em 1.5em;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #ffb400;
+  color: #fff;
+}
+
+/* -------------------------------------
+   Responsive Adjustments
+-------------------------------------- */
+@media (max-width: 768px) {
+  .about-us-section {
+    padding: 40px 15px;
+  }
+  .about-us-section h1 {
+    font-size: 2rem;
+  }
+  .cta-section {
+    margin: 2rem 15px;
+    border-radius: 6px;
+  }
+}
+
+/* ==============================
+1. General Container ============================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==============================
+   2. Hero Section
+============================== */
+.services-hero-section {
+  /* Subtle background pattern with a lightning bolt (SVG) repeated. 
+     Adjust size/color as desired. */
+  background-size: 80px 80px;
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.services-hero-section h1 {
+  font-size: 2.4rem;
+  color: #02687b;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.services-hero-section .hero-intro {
+  font-size: 1.1rem;
+  color: #333;
+  max-width: 800px;
+  margin: 0.5rem auto;
+  line-height: 1.6;
+}
+
+/* Optional: a slight overlay or decorative element at the bottom of hero */
+.services-hero-section::after {
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #02687b;
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+/* ==============================
+   3. Main Content
+============================== */
+.services-page-content {
+  background: #fff;
+  padding: 60px 20px;
+}
+
+/* Service Blocks as "Cards" */
+.service-block {
+  background-color: #fff;
+  margin-bottom: 2rem;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+.service-block:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Add a decorative small bolt icon on the top-right corner (optional) */
+.service-block::before {
+  content: "⚡";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.2rem;
+  opacity: 0.2; /* subtle */
+}
+
+.service-block h2 {
+  color: #02687b;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  border-bottom: 2px solid #02687b;
+  padding-bottom: 0.25rem;
+}
+
+.service-block p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.service-block ul {
+  list-style: none;
+  margin-bottom: 1rem;
+  margin-left: 0;
+  padding: 0;
+}
+.service-block ul li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 25px;
+}
+
+/* Use a small bolt as the list bullet (optional) */
+.service-block ul li::before {
+  content: "⚡";
+  position: absolute;
+  left: 0;
+  color: #02687b;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  top: 0.1rem;
+}
+
+/* CTA Buttons in service blocks (like "Get a Quote") */
+.services-cta-button {
+  display: inline-block;
+  background-color: #02687b;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  margin-top: 0.75rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.services-cta-button:hover {
+  background-color: #ffb400;
+  color: #fff;
+}
+
+/* ==============================
+   4. Brand Callout (Bottom)
+============================== */
+.services-brand-callout {
+  background: #024b58;
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+}
+.services-brand-callout h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+.services-brand-callout p {
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0.5rem auto 1.5rem;
+  line-height: 1.6;
+}
+/* Flickering Lightbulb Icon */
+.flickering-light {
+  font-size: 3rem;
+  color: #ffb400;
+  margin-bottom: 1rem;
+  animation: lightFlicker 2s infinite;
+}
+
+/* Flicker Animation */
+@keyframes lightFlicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Alternatively, for a more dynamic flicker */
+@keyframes lightFlicker {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  60% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* Dark Mode Overrides */
+.dark-mode .services-hero-section {
+  background: #222; /* remove background pattern or keep if you want */
+  color: #ddd;
+}
+
+.dark-mode .services-hero-section h1 {
+  color: #ffb400;
+}
+
+.dark-mode .services-hero-section .hero-intro {
+  color: #ccc;
+}
+
+.dark-mode .services-page-content {
+  background: #2c2c2c;
+}
+
+.dark-mode .service-block {
+  background-color: #333;
+  border: 1px solid #444;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .service-block h2 {
+  color: #ffb400;
+  border-bottom-color: #ffb400;
+}
+
+.dark-mode .service-block p,
+.dark-mode .service-block li {
+  color: #ccc;
+}
+
+.dark-mode .service-block::before {
+  color: #ffb400;
+  opacity: 0.15;
+}
+
+.dark-mode .services-cta-button {
+  background-color: #444;
+  color: #ffb400;
+}
+.dark-mode .services-cta-button:hover {
+  background-color: #ffb400;
+  color: #444;
+}
+
+.dark-mode .services-brand-callout {
+  background: #111;
+  color: #ddd;
+}
+.dark-mode .services-brand-callout h2 {
+  color: #ffb400;
+}
+.dark-mode .services-brand-callout p {
+  color: #ccc;
+}
+
+/* Adjust the brand callout's CTA button if present */
+.dark-mode .services-brand-callout .services-cta-button {
+  background-color: #444;
+  color: #ffb400;
+}
+.dark-mode .services-brand-callout .services-cta-button:hover {
+  background-color: #ffb400;
+  color: #444;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .services-hero-section {
+    padding: 40px 15px;
+  }
+  .services-hero-section h1 {
+    font-size: 2rem;
+  }
+  .service-block {
+    padding: 1rem;
+  }
+  .services-page-content {
+    padding: 40px 15px;
+  }
+  .services-brand-callout {
+    padding: 30px 15px;
+  }
+}
+
+/* Contact us */
+/* ==============================
+   Contact Us Section
+============================== */
+.contact-us-section {
+  background-color: #f9f9f9;
+  padding: 60px 20px;
+}
+.contact-us-section h1 {
+  font-size: 2.4rem;
+  color: #02687b;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.contact-us-section .contact-intro {
+  font-size: 1.1rem;
+  color: #333;
+  max-width: 800px;
+  margin: 0.5rem auto 2rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Error Messages */
+.contact-errors {
+  background-color: #ffe6e6;
+  border: 1px solid #ff0000;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+.contact-errors ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contact-errors li {
+  color: #ff0000;
+  margin-bottom: 5px;
+}
+
+/* Form Styling */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.contact-form .form-group {
+  margin-bottom: 20px;
+}
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #02687b;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: #02687b;
+  outline: none;
+}
+
+/* Submit Button */
+.contact-submit-button {
+  display: inline-block;
+  background-color: #02687b;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s ease;
+}
+.contact-submit-button:hover {
+  background-color: #ffb400;
+  color: #fff;
+}
+
+/* ==============================
+   Electrical-Themed Accents
+============================== */
+/* Add bolt icons or similar decorations if desired */
+.contact-form label::after {
+  content: "⚡";
+  margin-left: 5px;
+  color: #ffb400;
+}
+
+/* ==============================
+   Dark Mode Overrides
+============================== */
+.dark-mode .contact-us-section {
+  background-color: #2c2c2c;
+}
+.dark-mode .contact-us-section h1 {
+  color: #ffb400;
+}
+.dark-mode .contact-us-section .contact-intro {
+  color: #ccc;
+}
+
+.dark-mode .contact-errors {
+  background-color: #333;
+  border-color: #ff4d4d;
+}
+.dark-mode .contact-errors li {
+  color: #ff4d4d;
+}
+
+.dark-mode .contact-form label {
+  color: #ffb400;
+}
+.dark-mode .contact-form input[type="text"],
+.dark-mode .contact-form input[type="email"],
+.dark-mode .contact-form select,
+.dark-mode .contact-form textarea {
+  background-color: #444;
+  border: 1px solid #555;
+  color: #ddd;
+}
+.dark-mode .contact-form input[type="text"]::placeholder,
+.dark-mode .contact-form input[type="email"]::placeholder,
+.dark-mode .contact-form select::placeholder,
+.dark-mode .contact-form textarea::placeholder {
+  color: #aaa;
+}
+.dark-mode .contact-form input[type="text"]:focus,
+.dark-mode .contact-form input[type="email"]:focus,
+.dark-mode .contact-form select:focus,
+.dark-mode .contact-form textarea:focus {
+  border-color: #ffb400;
+}
+
+.dark-mode .contact-submit-button {
+  background-color: #444;
+  color: #ffb400;
+}
+.dark-mode .contact-submit-button:hover {
+  background-color: #ffb400;
+  color: #444;
+}
+
+.dark-mode .contact-form label::after {
+  color: #ffb400;
+}
+/* ==============================
+   Thank You Section
+============================== */
+.thankyou-section {
+  background-color: #f9f9f9;
+  padding: 60px 20px;
+  text-align: center;
+}
+.thankyou-section h1 {
+  font-size: 2.4rem;
+  color: #02687b;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.thankyou-section p {
+  font-size: 1.1rem;
+  color: #333;
+  max-width: 800px;
+  margin: 0.5rem auto 2rem;
+  line-height: 1.6;
+}
+
+/* CTA Button on Thank You Page */
+.thankyou-section .services-cta-button {
+  display: inline-block;
+  background-color: #02687b;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  margin-top: 0.75rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.thankyou-section .services-cta-button:hover {
+  background-color: #ffb400;
+  color: #fff;
+}
+
+/* Dark Mode Overrides for Thank You Page */
+.dark-mode .thankyou-section {
+  background-color: #2c2c2c;
+}
+.dark-mode .thankyou-section h1 {
+  color: #ffb400;
+}
+.dark-mode .thankyou-section p {
+  color: #ccc;
+}
+
+.dark-mode .thankyou-section .services-cta-button {
+  background-color: #444;
+  color: #ffb400;
+}
+.dark-mode .thankyou-section .services-cta-button:hover {
+  background-color: #ffb400;
+  color: #444;
+}

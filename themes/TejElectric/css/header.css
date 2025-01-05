@@ -1,0 +1,345 @@
+/* Global Reset */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box; /* optionally */
+  /* overflow-x: hidden;  <-- last resort if needed */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; /* recommended if using box-sizing: border-box */
+}
+
+/* Site Header */
+.site-header {
+  background-color: #02687b;
+  color: #fff;
+  padding: 10px 0;
+}
+
+#site-header {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Top Bar */
+.top-bar {
+  background-color: #02687b;
+  color: #fff;
+  padding: 10px 20px;
+  /* Remove any wide element or large margin that might push content out */
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.top-bar span {
+  font-size: 16px;
+  color: #fff;
+}
+.top-bar span:hover {
+  color: #ffb400;
+  text-shadow: 0 0 5px #000;
+}
+
+/* Primary Menu */
+.primary-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #024b58;
+  padding: 10px 20px;
+  border-top: 2px solid #02687b;
+  border-bottom: 2px solid #02687b;
+  /* Make sure this doesn't overflow */
+  width: 100%;
+  /* If there's a problem, try removing or adjusting the border or padding. */
+}
+
+.site-branding a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Navigation */
+.main-navigation .menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.main-navigation .menu li {
+  /* reduce from 0 15px if you suspect overflow */
+  margin: 0 10px;
+}
+.main-navigation .menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+.main-navigation .menu li a:hover {
+  color: #ffb400;
+  border-bottom: 2px solid #ffb400;
+}
+/* ========== THEME TOGGLE SWITCH ========== */
+.theme-toggle {
+  position: fixed; /* or absolute, up to you */
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999; /* keep above other elements */
+}
+
+.theme-toggle input[type="checkbox"] {
+  display: none; /* Hide the raw checkbox */
+}
+
+/* Label that visually becomes the toggle switch */
+/* Position & basic styling for the switch container */
+.electric-switch {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+}
+
+/* Hide the raw checkbox */
+.electric-switch input[type="checkbox"] {
+  display: none;
+}
+
+/* The main switch body */
+.switch-body {
+  display: inline-block;
+  width: 70px;
+  height: 40px;
+  background: #444; /* body color (off) */
+  border: 2px solid #333; /* slight border */
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* The lever that flips from top to bottom (or vice versa) */
+.switch-lever {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 8px;
+  height: 100%;
+  background: #ffb400; /* lever color */
+  transform-origin: bottom center;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-out;
+}
+
+/* Sparks for a fun effect */
+.switch-spark {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #ffb400 20%, transparent 60%);
+  opacity: 0;
+  animation: sparkFlicker 1s infinite ease-in-out;
+}
+
+/* Place them at different spots */
+.spark-1 {
+  top: 5px;
+  left: 15px;
+}
+.spark-2 {
+  top: 25px;
+  right: 15px;
+}
+
+/* Flicker animation for sparks (optional) */
+@keyframes sparkFlicker {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  40% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* When the switch is checked -> move the lever */
+#electric-toggle:checked + .switch-body .switch-lever {
+  transform: rotate(
+    -70deg
+  ); /* or 70deg, depending on which way you want it to flip */
+}
+
+/* Also adjust the body color if "on" means dark mode */
+#electric-toggle:checked + .switch-body {
+  background: #02687b; /* could represent "on" or a 'powered' color */
+}
+
+/* ================================
+   DARK MODE GLOBAL OVERRIDES
+   ================================ */
+.dark-mode {
+  background-color: #222;
+  color: #eee;
+}
+
+.dark-mode a {
+  color: #ffb400;
+}
+
+/* Example of overriding your existing sections in dark mode */
+.dark-mode .services-section {
+  background-color: #333;
+  color: #ddd;
+}
+.dark-mode .service-card {
+  background-color: #444;
+  border: 1px solid #666;
+  color: #ddd;
+}
+.dark-mode .service-card h3 {
+  color: #ffb400;
+}
+/* ===== THUNDER OVERLAY ===== */
+.thunder-overlay {
+  display: none; /* hidden by default */
+  position: fixed; /* or absolute, if you prefer */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* Let clicks pass through */
+  z-index: 9990; /* Ensure it's above content but below any modals */
+}
+
+/* If .dark-mode is active, show the overlay */
+.dark-mode .thunder-overlay {
+  display: block;
+}
+
+/* Lightning Bolts Common Style */
+.lightning-bolt {
+  position: absolute;
+  width: 2px; /* the 'thickness' of the bolt */
+  height: 200px; /* initial length of the bolt */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+  opacity: 0;
+  animation: strike 3s infinite;
+}
+
+/* Position each bolt somewhat randomly (tweak to your liking) */
+.bolt1 {
+  top: 10%;
+  left: 30%;
+}
+.bolt2 {
+  top: 35%;
+  left: 60%;
+}
+.bolt3 {
+  top: 65%;
+  left: 45%;
+}
+
+/* Keyframes: random flicker/strike effect */
+@keyframes strike {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+    height: 200px;
+  }
+  8% {
+    opacity: 0.5;
+    height: 220px;
+  }
+  10% {
+    opacity: 0;
+    height: 0px;
+  }
+  50% {
+    opacity: 0;
+  }
+  /* Bolt might re-strike around 70-80% for randomness */
+  70% {
+    opacity: 1;
+    height: 180px;
+  }
+  75% {
+    opacity: 0.3;
+    height: 220px;
+  }
+  80% {
+    opacity: 0;
+    height: 0px;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Buttons */
+button,
+input[type="submit"],
+.slide-button,
+a.button {
+  background-color: #02687b;
+  color: #fff;
+  border: none;
+  padding: 0.75em 1.5em;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover,
+.slide-button:hover,
+a.button:hover {
+  background-color: #ffb400;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .primary-menu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .main-navigation .menu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .main-navigation .menu li {
+    margin: 10px 0;
+  }
+}

@@ -1,0 +1,110 @@
+/* General Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Service Image Section */
+.single-service-featured-image {
+  margin: 40px auto;
+  text-align: center;
+  max-width: 800px; /* Constrain the maximum image width */
+  border: 2px solid #02687b; /* Add a theme color border */
+  border-radius: 12px;
+  overflow: hidden; /* Ensure rounded corners apply to the image */
+  background-color: #f9f9f9; /* Subtle background behind the image */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Softer shadow */
+}
+.single-service-featured-image img {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover animation */
+}
+.single-service-featured-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2); /* Highlight on hover */
+}
+
+/* Service Content Section */
+.single-service-content {
+  text-align: center;
+  margin: 40px 0;
+  background: linear-gradient(
+    180deg,
+    #f9f9f9,
+    #eef7f9
+  ); /* Add a subtle gradient */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Subtle container shadow */
+}
+.single-service-content .service-title {
+  font-size: 2.4rem;
+  color: #02687b;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for title */
+}
+.single-service-content .service-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Electrical Sparks Icon for Title (Optional) */
+.service-title::after {
+  content: "⚡";
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+  color: #ffb400;
+  animation: blink 1.5s infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* CTA Button */
+.single-service-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+.single-service-cta .cta-button {
+  display: inline-block;
+  background-color: #02687b;
+  color: #fff;
+  padding: 0.9rem 1.8rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.single-service-cta .cta-button:hover {
+  background-color: #ffb400;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .single-service-featured-image {
+    max-width: 90%; /* Reduce max width for smaller screens */
+  }
+  .single-service-content .service-title {
+    font-size: 2rem;
+  }
+  .single-service-content .service-description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .single-service-cta .cta-button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
