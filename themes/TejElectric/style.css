@@ -6,6 +6,8 @@
 .services-section .container {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative; /* Added to establish positioning context */
+  overflow: visible; /* Ensure overflow is visible */
 }
 
 /* Main Heading & Intro Text */
@@ -501,7 +503,42 @@
     border-radius: 6px;
   }
 }
+@media (max-width: 480px) {
+  .electric-hero-text h2 {
+    font-size: 1.5rem;
+  }
 
+  .about-us-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .intro-text {
+    font-size: 0.95rem;
+    padding: 0 5px;
+  }
+
+  .about-service-box h2 {
+    font-size: 1.1rem;
+  }
+
+  .cta-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .cta-section p {
+    font-size: 0.95rem;
+    padding: 0 5px;
+  }
+
+  .electric-bulb-container {
+    font-size: 2.5rem;
+  }
+
+  .cta-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
 /* ==============================
 1. General Container ============================== */
 .container {
@@ -642,6 +679,128 @@
 }
 
 /* ==============================
+   2. Hanging Bulbs Styles
+============================== */
+
+/* Base styles for hanging bulbs */
+.hanging-bulb {
+  position: absolute;
+  top: -10px; /* Adjusted for slight overlap */
+  font-size: 2rem;
+  animation: sway 3s infinite ease-in-out;
+  z-index: 10; /* Ensure bulbs appear above other elements */
+}
+
+/* Positioning for left and right bulbs */
+.bulb-left {
+  left: 10%;
+}
+
+.bulb-right {
+  right: 10%;
+}
+
+/* Sway Animation */
+@keyframes sway {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Wire using ::before pseudo-element */
+.hanging-bulb::before {
+  content: "";
+  position: absolute;
+  top: -75px; /* Height of the wire */
+  left: 50%; /* Center the wire horizontally */
+  transform: translateX(-50%);
+  width: 2px; /* Thickness of the wire */
+  height: 80px; /* Length of the wire */
+  background-color: #666; /* Wire color */
+}
+
+/* Dark Mode: Bulbs are "on" */
+.dark-mode .hanging-bulb i {
+  color: #ffeb3b; /* Bright yellow for "on" state */
+  text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b;
+}
+
+/* Light Mode: Bulbs are "off" */
+.hanging-bulb i {
+  color: #ccc; /* Dimmed color for "off" state */
+  text-shadow: none;
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+/* ==============================
+   4. Hover Effect for Wires
+============================== */
+/* Optional: Pulse Animation on Hover */
+.hanging-bulb:hover {
+  animation: pulse 1s infinite;
+}
+
+/* Wire Base Styles */
+.hanging-bulb::before,
+.hanging-bulb::after {
+  transition: background-color 0.3s ease;
+}
+/* Hover Effect for Bulb Icon */
+.hanging-bulb:hover i {
+  color: #ffd700; /* Brighter yellow on hover */
+  text-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700; /* Glow effect */
+  cursor: pointer;
+}
+
+/* Hover Effect for Wires */
+.hanging-bulb:hover::before,
+.hanging-bulb:hover::after {
+  background-color: #ffd700; /* Change wire color to match glow */
+}
+/* Hover Effect for Wires */
+.hanging-bulb:hover::before,
+.hanging-bulb:hover::after {
+  background-color: #ffd700; /* Change wire color to match the bulb's glow */
+}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hanging-bulb {
+    font-size: 1.5rem;
+    top: -5px; /* Adjusted for smaller screens */
+  }
+
+  .bulb-left {
+    left: 5%;
+  }
+
+  .bulb-right {
+    right: 5%;
+  }
+
+  .hanging-bulb::before {
+    height: 20px; /* Shorter wire on smaller screens */
+    top: -20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hanging-bulb {
+    display: none; /* Hide bulbs on very small screens to save space */
+  }
+}
+/* ==============================
    4. Brand Callout (Bottom)
 ============================== */
 .services-brand-callout {
@@ -721,7 +880,9 @@
   background: #222; /* remove background pattern or keep if you want */
   color: #ddd;
 }
-
+.dark-mode .services-section .intro-text {
+  color: #ccc;
+}
 .dark-mode .services-hero-section h1 {
   color: #ffb400;
 }

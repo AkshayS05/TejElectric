@@ -83,76 +83,145 @@ function disable_admin_bar_for_subs() {
         show_admin_bar(false);
     }
 }
-/**
- * Custom Contact Form Shortcode
- */
+
+// Custom Contact Form Shortcode
 function tej_electric_contact_form_shortcode() {
-    // Handle form submission (check if form is submitted and nonce is valid)
-    if ( isset($_POST['tej_contact_nonce'], $_POST['tej_contact_submit'])
-         && wp_verify_nonce($_POST['tej_contact_nonce'], 'tej_contact_action') ) {
-        
-        // Sanitize form inputs
-        $first_name   = sanitize_text_field($_POST['first_name']);
-        $last_name    = sanitize_text_field($_POST['last_name']);
-        $service      = sanitize_text_field($_POST['service']);
-        $query_message = sanitize_textarea_field($_POST['query_message']);
+    // Initialize variables for form processing
+    $errors = [];
+    $success = false;
 
-        // Prepare email
-        // Change this to your Gmail or any valid email address
-        $to      = 'akshaysharma5432@gmail.com';
-        $subject = 'New Inquiry from ' . $first_name . ' ' . $last_name;
-        
-        // Email body
-        $body  = "First Name: $first_name\n";
-        $body .= "Last Name: $last_name\n";
-        $body .= "Service Interested In: $service\n";
-        $body .= "Message:\n$query_message\n";
-        
-        $headers = array('Content-Type: text/plain; charset=UTF-8');
+    // Handle form submission
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tej_contact_submit'])) {
+        error_log('Form submission detected.');
 
-        // Send the email
-        wp_mail($to, $subject, $body, $headers);
+        // Verify nonce for security
+        if (!isset($_POST['tej_contact_nonce']) || !wp_verify_nonce($_POST['tej_contact_nonce'], 'tej_contact_action')) {
+            $errors[] = 'Security check failed. Please try again.';
+            error_log('Nonce verification failed.');
+        }
 
-        // (Optional) Display success message or redirect
-        echo '<div class="tej-contact-success">Thank you! Your message has been sent.</div>';
+        // Honeypot Check (Optional)
+        /*
+        if (!empty($_POST['hp_field'])) {
+            $errors[] = 'Spam detected.';
+            error_log('Honeypot field filled.');
+        }
+        */
+
+        // Sanitize and validate form inputs only if no previous errors
+        if (empty($errors)) {
+            // Sanitize form inputs
+            $first_name    = sanitize_text_field($_POST['first_name']);
+            $last_name     = sanitize_text_field($_POST['last_name']);
+            $service       = sanitize_text_field($_POST['service']);
+            $query_message = sanitize_textarea_field($_POST['query_message']);
+
+            // Validate required fields
+            if (empty($first_name)) {
+                $errors[] = 'First Name is required.';
+                error_log('First Name is missing.');
+            }
+            if (empty($last_name)) {
+                $errors[] = 'Last Name is required.';
+                error_log('Last Name is missing.');
+            }
+            if (empty($service)) {
+                $errors[] = 'Please select a Service.';
+                error_log('Service selection is missing.');
+            }
+            if (empty($query_message)) {
+                $errors[] = 'Message cannot be empty.';
+                error_log('Message is missing.');
+            }
+
+            // If no validation errors, proceed to send the email
+            if (empty($errors)) {
+                $to      = 'akshaysharma5432@gmail.com'; // Change this to your desired email address
+                $subject = 'New Inquiry from ' . $first_name . ' ' . $last_name;
+
+                // Email body
+                $body  = "First Name: $first_name\n";
+                $body .= "Last Name: $last_name\n";
+                $body .= "Service Interested In: $service\n";
+                $body .= "Message:\n$query_message\n";
+
+                $headers = array(
+                    'Content-Type: text/plain; charset=UTF-8',
+                    'From: Tej Electric <noreply@yourdomain.com>' // Ensure this is a valid email from your domain
+                );
+
+                // Send the email and store the result
+                $mail_sent = wp_mail($to, $subject, $body, $headers);
+                error_log('wp_mail() function called. Result: ' . ($mail_sent ? 'Success' : 'Failure'));
+
+                if ($mail_sent) {
+                    // Redirect to Thank You page
+                    error_log('Redirecting to Thank You page.');
+                    wp_redirect(home_url('/thank-you/'));
+                    exit;
+                } else {
+                    $errors[] = 'There was an issue sending your message. Please try again later.';
+                    error_log('wp_mail() failed to send the email.');
+                }
+            }
+        }
     }
 
-    // The HTML form (always displayed)
-    ob_start(); // start output buffering
+    // Start output buffering
+    ob_start();
     ?>
     <div class="tej-contact-container">
-        <form method="post" class="tej-contact-form">
+        <?php if (!empty($errors)): ?>
+            <div class="tej-contact-errors">
+                <ul>
+                    <?php foreach ($errors as $error): ?>
+                        <li><?php echo esc_html($error); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+
+        <form method="post" class="tej-contact-form" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>">
             <?php 
             // WP nonce field for security
             wp_nonce_field('tej_contact_action', 'tej_contact_nonce'); 
             ?>
 
+            <!-- Optional Honeypot Field -->
+            <!-- 
+            <div class="form-group honeypot" style="display:none;">
+                <label for="hp_field">Leave this field empty</label>
+                <input type="text" id="hp_field" name="hp_field" value="">
+            </div>
+            -->
+
             <h2>Get In Touch</h2>
 
             <div class="tej-contact-row">
-                <label for="first_name">First Name</label>
-                <input type="text" name="first_name" required />
+                <label for="first_name">First Name<span style="color:red;">*</span></label>
+                <input type="text" name="first_name" id="first_name" required value="<?php echo isset($first_name) ? esc_attr($first_name) : ''; ?>" />
             </div>
 
             <div class="tej-contact-row">
-                <label for="last_name">Last Name</label>
-                <input type="text" name="last_name" required />
+                <label for="last_name">Last Name<span style="color:red;">*</span></label>
+                <input type="text" name="last_name" id="last_name" required value="<?php echo isset($last_name) ? esc_attr($last_name) : ''; ?>" />
             </div>
 
             <div class="tej-contact-row">
-                <label for="service">Service Interested In</label>
-                <select name="service" required>
-                    <option value="Duct Smoke Sensor Installation">Duct Smoke Sensor Installation</option>
-                    <option value="EV Chargers">EV Chargers</option>
-                    <option value="High Voltage Installation">High Voltage Installation</option>
-                    <option value="Substation Design & Construction">Substation Design & Construction</option>
-                    <option value="Other">Other</option>
+                <label for="service">Service Interested In<span style="color:red;">*</span></label>
+                <select name="service" id="service" required>
+                    <option value="">-- Please Select --</option>
+                    <option value="Duct Smoke Sensor Installation" <?php selected(isset($service) ? $service : '', 'Duct Smoke Sensor Installation'); ?>>Duct Smoke Sensor Installation</option>
+                    <option value="EV Chargers" <?php selected(isset($service) ? $service : '', 'EV Chargers'); ?>>EV Chargers</option>
+                    <option value="High Voltage Installation" <?php selected(isset($service) ? $service : '', 'High Voltage Installation'); ?>>High Voltage Installation</option>
+                    <option value="Substation Design & Construction" <?php selected(isset($service) ? $service : '', 'Substation Design & Construction'); ?>>Substation Design & Construction</option>
+                    <option value="Other" <?php selected(isset($service) ? $service : '', 'Other'); ?>>Other</option>
                 </select>
             </div>
 
             <div class="tej-contact-row">
-                <label for="query_message">Your Message</label>
-                <textarea name="query_message" rows="5" required></textarea>
+                <label for="query_message">Your Message<span style="color:red;">*</span></label>
+                <textarea name="query_message" id="query_message" rows="5" required><?php echo isset($query_message) ? esc_textarea($query_message) : ''; ?></textarea>
             </div>
 
             <button type="submit" name="tej_contact_submit">Submit</button>
@@ -160,7 +229,7 @@ function tej_electric_contact_form_shortcode() {
     </div>
     <?php
 
-    return ob_get_clean(); // return the form HTML
+    return ob_get_clean(); // Return the form HTML
 }
 add_shortcode('tej_contact_form', 'tej_electric_contact_form_shortcode');
 
@@ -218,3 +287,10 @@ function tej_electric_login_favicon() {
     echo '<link rel="icon" href="' . get_template_directory_uri() . '/images/tej-electric-favicon.png" type="image/png">';
 }
 add_action('login_head', 'tej_electric_login_favicon');
+
+
+function enqueue_font_awesome() {
+    wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', array(), '6.4.0' );
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_font_awesome' );
+?>

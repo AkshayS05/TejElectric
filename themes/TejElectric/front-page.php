@@ -15,7 +15,13 @@ get_template_part('template-parts/hero', 'section');
 ?>
 <section class="services-section">
   <div class="container">
-    <!-- Big Heading -->
+     <!-- Hanging Bulbs -->
+     <div class="hanging-bulb bulb-left" aria-hidden="true">
+      <i class="fas fa-lightbulb"></i>
+    </div>
+    <div class="hanging-bulb bulb-right" aria-hidden="true">
+      <i class="fas fa-lightbulb"></i>
+    </div>
     <h2>Providing a Range of<br>Commercial &amp; Residential Services</h2>
 
     <!-- Intro Paragraph -->

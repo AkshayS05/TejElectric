@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM fully loaded and parsed.");
-
   // The container that moves (translated) to show each slide:
   const slidesContainer = document.querySelector(".hero-slider .slides");
   // Each individual slide element:
@@ -15,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Validate required elements:
   if (!slidesContainer || slideCount === 0 || !prevButton || !nextButton) {
-    console.error("Slider elements are missing or incorrect!");
     return;
   }
 
@@ -35,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Move the container so that the current slide is in view:
     const offset = -currentIndex * 100;
     slidesContainer.style.transform = `translateX(${offset}%)`;
-    console.log(`Slide moved to index: ${currentIndex}`);
   }
 
   // Click handlers for "Prev" and "Next"
@@ -75,4 +71,28 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem("darkMode", "disabled");
     }
   });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.querySelector(".hamburger-menu");
+  const mainNavigation = document.querySelector(".main-navigation");
+
+  if (hamburger && mainNavigation) {
+    hamburger.addEventListener("click", function (e) {
+      e.stopPropagation(); // Prevent the click from bubbling up
+      // Toggle menu visibility
+      mainNavigation.classList.toggle("open");
+      hamburger.classList.toggle("open");
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (event) {
+      if (
+        !mainNavigation.contains(event.target) &&
+        !hamburger.contains(event.target)
+      ) {
+        mainNavigation.classList.remove("open");
+        hamburger.classList.remove("open");
+      }
+    });
+  }
 });
